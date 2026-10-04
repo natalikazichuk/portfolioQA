@@ -1,0 +1,8 @@
+[
+ {"name":"Manual Testing","level":95,"icon":"🧪"},
+ {"name":"Bug Reporting","level":95,"icon":"🐞"},
+ {"name":"Exploratory Testing","level":90,"icon":"🔎"},
+ {"name":"API Testing","level":82,"icon":"🔌"},
+ {"name":"AI / LLM Evaluation","level":85,"icon":"🤖"},
+ {"name":"Test Case Design","level":92,"icon":"📋"}
+]
