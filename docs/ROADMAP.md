@@ -1,13 +1,16 @@
 # QA NK Roadmap
 
-## V1 — MVP
-Home, About, Skills, Projects, CV, GitHub, Contact.
+## V1 — MVP (P0)
+Home, About, Skills, Projects, CV, GitHub, Contact, **Recruiter Mode**, responsive, deploy.
 
-## V2 — Interactive QA
-Bug Hunt, Bug Report form, Bug Museum, animations.
+## V2 — Real QA cases
+VeteranJobPortal case study, Snake Eye, SchoolKingdoms, QA documentation links.
 
-## V3 — QA Evidence
-API Lab, AI Lab, Analytics, downloadable QA documentation.
+## V3 — Interactive QA
+QA Quest map, Bug Hunt, Bug Report form, Bug Museum.
 
-## V4 — Polish
-Recruiter Mode, achievements, Easter eggs, accessibility, performance optimization.
+## V4 — QA Evidence
+API Lab, AI Lab, Playwright e2e + CI badge, downloadable QA documentation.
+
+## V5 — Polish
+Achievements, Easter eggs, accessibility, performance (Lighthouse >= 90), EN/UA.
