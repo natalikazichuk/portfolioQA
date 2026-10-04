@@ -1,0 +1,4 @@
+[
+ {"id":"BUG-001","title":"Application not visible to Recruiter","severity":"High","status":"Fixed","project":"VeteranJobPortal"},
+ {"id":"BUG-002","title":"Portfolio demo bug — placeholder","severity":"Medium","status":"Demo","project":"QA NK"}
+]
