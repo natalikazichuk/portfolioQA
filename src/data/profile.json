@@ -4,8 +4,8 @@
   "summary": "I test products from the user's perspective and from the system's perspective: manual testing, API validation, bug reporting and AI response evaluation.",
   "highlights": [
     "Found a High-severity bug in VeteranJobPortal: an application created by a Guest was not visible to the Recruiter. Verified the fix.",
-    "Tested three products across different domains: job portal, trading web app, gamified education platform.",
-    "Work with user stories, acceptance criteria, test cases, checklists and bug reports."
+    "Tested four products across different domains: job portal, accounting & trade SaaS, trading web app, gamified education platform.",
+    "Work with user stories, acceptance criteria, test cases, checklists, traceability matrices and bug reports."
   ],
   "tools": ["Postman", "Chrome DevTools", "Playwright", "GitHub", "Google Sheets"],
   "links": { "cv": "", "github": "", "email": "" }

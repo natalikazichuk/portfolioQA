@@ -1,5 +1,6 @@
 [
   {"id":"veteran-job-portal","title":"VeteranJobPortal","icon":"🏰","status":"TESTED","type":"Web Application","featured":true},
+  {"id":"navkolo","title":"Navkolo","icon":"📊","status":"TESTED","type":"SaaS · Accounting & Trade","featured":false},
   {"id":"snake-eye","title":"Snake Eye","icon":"🐍","status":"IN PROGRESS","type":"Data / Web Project","featured":false},
   {"id":"schoolkingdoms","title":"SchoolKingdoms","icon":"🏫","status":"IN PROGRESS","type":"Educational Platform","featured":false}
 ]

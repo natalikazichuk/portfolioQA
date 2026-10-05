@@ -1,4 +1,13 @@
 [
  {"id":"BUG-001","title":"Application not visible to Recruiter","severity":"High","status":"Fixed","project":"VeteranJobPortal"},
- {"id":"BUG-002","title":"Portfolio demo bug — placeholder","severity":"Medium","status":"Demo","project":"QA NK"}
+ {"id":"BUG-002","title":"Portfolio demo bug — placeholder","severity":"Medium","status":"Demo","project":"QA NK"},
+ {"id":"NAV-001","title":"Registration succeeds with mismatched password confirmation","severity":"High","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-002","title":"Registration confirmation email is not delivered","severity":"High","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-003","title":"No validation message for empty required sign-up fields","severity":"Medium","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-004","title":"Email with Cyrillic/CJK characters accepted without error","severity":"Medium","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-005","title":"Common passwords and password equal to email/phone accepted","severity":"Medium","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-006","title":"Name field accepts a single character","severity":"Low","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-007","title":"Name field has no maximum length","severity":"Low","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-008","title":"Same generic login error shown under both fields","severity":"Low","status":"Reported","project":"Navkolo"},
+ {"id":"NAV-009","title":"Required fields not marked, no hints or password requirements","severity":"Low","status":"Reported","project":"Navkolo"}
 ]
