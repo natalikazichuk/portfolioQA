@@ -11,7 +11,8 @@ const projectLinks = {
   navkolo: 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/navkolo/README.md',
   guru99: 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/guru99/README.md',
   'snake-eye': 'https://github.com/natalikazichuk/Snake-Eye',
-  schoolkingdoms: 'https://github.com/natalikazichuk/schoolkingdoms'
+  // SchoolKingdoms: посилання вимкнене, поки не опубліковано демо (schoolkingdoms-demo)
+  schoolkingdoms: null
 };
 
 const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/vjp/README.md';
@@ -67,8 +68,13 @@ function Metric({value,label}) {
 function ProjectCard({p,index}) {
   const href = projectLinks[p.id];
   const style = p.image ? {'--shot': `url(${import.meta.env.BASE_URL}${p.image})`, '--shot-pos': p.imagePosition || 'center top'} : undefined;
+  const cls = 'project-card'+(p.featured?' featured':'')+(p.image?' has-shot':'')+(href?'':' is-disabled');
+  const Tag = href ? 'a' : 'div';
+  const linkProps = href
+    ? { href, target:'_blank', rel:'noopener noreferrer', 'aria-label':'Open ' + p.title + ' project' }
+    : { 'aria-disabled':'true' };
   return (
-    <a className={'project-card'+(p.featured?' featured':'')+(p.image?' has-shot':'')} style={style} href={href} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + p.title + ' project'}>
+    <Tag className={cls} style={style} {...linkProps}>
       <div className="project-top">
         <span className="project-number">0{index+1}</span>
         <span className="status">{p.status}</span>
@@ -77,8 +83,8 @@ function ProjectCard({p,index}) {
         <h3>{p.title}</h3>
         <p>{p.type}</p>
       </div>
-      <div className="project-link">OPEN PROJECT <span>↗</span></div>
-    </a>
+      <div className="project-link">{href ? <>OPEN PROJECT <span>↗</span></> : 'DEMO COMING SOON'}</div>
+    </Tag>
   );
 }
 
