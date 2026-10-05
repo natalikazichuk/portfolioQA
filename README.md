@@ -8,6 +8,7 @@ QA NK is a portfolio that demonstrates QA skills through an interactive product 
 ## Current projects
 - VeteranJobPortal — primary QA case study ([docs](docs/vjp/README.md): test plan, user stories, test cases, RTM)
 - Navkolo — business SaaS, registration/login checklist, user scenarios, API checks ([case study](docs/navkolo/README.md))
+- Guru99 Bank — training project: New Customer form test cases, Jira bug reports, requirements checklist ([docs](docs/guru99/README.md))
 - Snake Eye — web/data project
 - SchoolKingdoms — educational platform
 

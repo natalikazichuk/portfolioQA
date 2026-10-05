@@ -7,12 +7,13 @@ import profile from './data/profile.json';
 
 const projectLinks = {
   'veteran-job-portal': 'https://github.com/natalikazichuk/veteran-jobs-portal-testing',
-  navkolo: 'https://github.com/natalikazichuk/portfolioQA/blob/main/docs/navkolo/README.md',
+  navkolo: 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/navkolo/README.md',
+  guru99: 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/guru99/README.md',
   'snake-eye': 'https://github.com/natalikazichuk/Snake-Eye',
   schoolkingdoms: 'https://github.com/natalikazichuk/schoolkingdoms'
 };
 
-const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA/blob/main/docs/vjp/README.md';
+const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/vjp/README.md';
 
 const getView = () => (window.location.hash === '#recruiter' ? 'recruiter' : 'home');
 
@@ -63,7 +64,7 @@ function Metric({value,label}) {
 function ProjectCard({p,index}) {
   const href = projectLinks[p.id];
   return (
-    <a className="project-card" href={href} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + p.title + ' project'}>
+    <a className={'project-card'+(p.featured?' featured':'')} href={href} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + p.title + ' project'}>
       <div className="project-top">
         <span className="project-number">0{index+1}</span>
         <span className="status">{p.status}</span>
@@ -119,7 +120,7 @@ function Home() {
       <section id="projects" className="section">
         <div className="section-heading">
           <div><div className="eyebrow">01 / EXPERIENCE</div><h2>QA Projects</h2></div>
-          <p>Hands-on testing across web applications, a business SaaS, data projects and an educational platform.</p>
+          <p>Hands-on testing across web applications, a business SaaS, a banking app, data projects and an educational platform.</p>
         </div>
         <div className="project-grid">{projects.map((p,i)=><ProjectCard p={p} index={i} key={p.id}/>)}</div>
       </section>
