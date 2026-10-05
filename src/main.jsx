@@ -65,7 +65,7 @@ function Metric({value,label}) {
 
 function ProjectCard({p,index}) {
   const href = projectLinks[p.id];
-  const style = p.image ? {'--shot': `url(${import.meta.env.BASE_URL}${p.image})`} : undefined;
+  const style = p.image ? {'--shot': `url(${import.meta.env.BASE_URL}${p.image})`, '--shot-pos': p.imagePosition || 'center top'} : undefined;
   return (
     <a className={'project-card'+(p.featured?' featured':'')+(p.image?' has-shot':'')} style={style} href={href} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + p.title + ' project'}>
       <div className="project-top">
@@ -152,7 +152,8 @@ function Home() {
             <h3>{j.role}</h3>
             <p className="job-company">{j.company}</p>
             <p className="job-did">{j.did}</p>
-            <ul>{j.qa.map(q=><li key={q}>{q}</li>)}</ul>
+            <div className="job-qa-label">USEFUL FOR QA</div>
+            <ul>{j.qa.map(q=><li key={q.tag}><b className="qa-tag">{q.tag}</b><span>{q.text}</span></li>)}</ul>
           </article>)}
         </div>
         <div className="soft-skills">
