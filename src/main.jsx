@@ -72,7 +72,6 @@ function ProjectCard({p,index}) {
         <span className="project-number">0{index+1}</span>
         <span className="status">{p.status}</span>
       </div>
-      <div className="project-icon">{p.icon}</div>
       <div className="project-content">
         <h3>{p.title}</h3>
         <p>{p.type}</p>
@@ -211,7 +210,7 @@ function Recruiter() {
     </div>
     <div className="recruit-grid">
       <section><span className="eyebrow">KEY EVIDENCE</span><ul>{profile.highlights.map(h=><li key={h}>{h}</li>)}</ul></section>
-      <section><span className="eyebrow">BEST CASE</span><h2>{best.icon} {best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a>{best.id==='veteran-job-portal' && <> · <a className="text-link" href={vjpDocsLink} target="_blank" rel="noopener noreferrer">Test plan, cases &amp; RTM →</a></>}</section>
+      <section><span className="eyebrow">BEST CASE</span><h2 className="project-name">{best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a>{best.id==='veteran-job-portal' && <> · <a className="text-link" href={vjpDocsLink} target="_blank" rel="noopener noreferrer">Test plan, cases &amp; RTM →</a></>}</section>
       <section><span className="eyebrow">TOOLS</span><div className="chips">{profile.tools.map(t=><span key={t}>{t}</span>)}</div></section>
       <section><span className="eyebrow">BACKGROUND</span><ul>{experience.jobs.map(j=><li key={j.company}>{j.role} · {j.company}</li>)}</ul></section>
       <section><span className="eyebrow">SOFT SKILLS</span><div className="chips">{experience.softSkills.map(t=><span key={t}>{t}</span>)}</div></section>
