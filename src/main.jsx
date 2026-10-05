@@ -53,6 +53,7 @@ function Header({ view }) {
       </nav>
       <div className="header-actions">
         <span className="availability"><i /> AVAILABLE</span>
+        <button type="button" className="header-print" onClick={()=>window.print()} aria-label="Print one-page summary (A4)">Print</button>
         <a className="header-cta" href="#recruiter">Recruiter <span>↗</span></a>
       </div>
     </header>
@@ -218,6 +219,59 @@ function Recruiter() {
   </div>;
 }
 
+const PORTFOLIO_URL = 'natalikazichuk.github.io/portfolioQA2026';
+const printProjects = [
+  ['VeteranJobsPortal', 'Job platform · 3 roles', 'Test plan, 24 user stories, 69 scenarios, 40 test cases, RTM 24/24. Found a High bug: guest applications not visible to the recruiter; fix verified.'],
+  ['Navkolo', 'Business SaaS', 'Exploratory and API testing (Postman, DevTools) without a spec. 9 defects, 2 High: e.g. registration accepted a mismatched password confirmation.'],
+  ['Guru99 Bank', 'Banking web app', '30 test cases for the New Customer form (17 pass / 13 fail), Jira bug reports, retest on v2.0. Found a raw DB error exposing the DB user.'],
+  ['SchoolKingdoms', 'Gamified learning platform', 'Public demo build with a Chromium smoke test, 39/39 pages pass; the test also caught missing assets in the full app.']
+];
+
+/* Одна сторінка A4: видно лише під час друку (кнопка Print у шапці). */
+function PrintSheet() {
+  return <div className="print-sheet" aria-hidden="true">
+    <header className="ps-head">
+      <div>
+        <h1>Natali Kazichuk</h1>
+        <p className="ps-role">{profile.role} · API Testing · Test Design</p>
+      </div>
+      <ul className="ps-contacts">
+        <li>natalikazichuk@gmail.com</li>
+        <li>{PORTFOLIO_URL}</li>
+        <li>github.com/natalikazichuk</li>
+        <li>linkedin.com/in/natali-kazichuk-960153249</li>
+      </ul>
+    </header>
+    <p className="ps-summary">{profile.summary}</p>
+
+    <h2>Projects</h2>
+    {printProjects.map(([name, type, text]) => <div className="ps-project" key={name}>
+      <b>{name}</b> <span className="ps-muted">· {type}</span>
+      <p>{text}</p>
+    </div>)}
+
+    <div className="ps-cols">
+      <div>
+        <h2>Skills</h2>
+        <p>{skills.map(s => s.name).join(' · ')}</p>
+        <h2>Tools</h2>
+        <p>{[...profile.tools, 'Jira', 'SQL'].join(' · ')}</p>
+      </div>
+      <div>
+        <h2>Before QA</h2>
+        {experience.jobs.map(j => <p key={j.company} className="ps-job">
+          <b>{j.role}</b>, {j.company}<br />
+          <span className="ps-muted">{j.qa.map(q => q.tag).join(' · ')}</span>
+        </p>)}
+      </div>
+    </div>
+
+    <h2>Soft skills</h2>
+    <p>{experience.softSkills.join(' · ')}</p>
+    <p className="ps-foot">Full portfolio with case studies and test documentation: {PORTFOLIO_URL}</p>
+  </div>;
+}
+
 function App() {
   const view=useView();
   return <div className="site">
@@ -225,6 +279,7 @@ function App() {
     <Header view={view}/>
     <main id="content">{view==='recruiter'?<Recruiter/>:<Home/>}</main>
     <footer><span>QA NK</span><span>Manual QA · API · AI Evaluation</span><span>Quality is not an accident.</span></footer>
+    <PrintSheet/>
   </div>;
 }
 

@@ -19,6 +19,9 @@ nav a:hover{color:#fff}
 .availability i{width:7px;height:7px;border-radius:50%;background:#5de29a;box-shadow:0 0 10px #5de29a}
 .header-cta{font-size:10px;font-weight:900;letter-spacing:.08em;color:#04101b;text-decoration:none;background:var(--cyan);padding:10px 13px;border-radius:8px}
 .header-cta span{margin-left:4px}
+.header-print{font:inherit;font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--cyan);background:transparent;border:1px solid #25445d;padding:9px 12px;border-radius:8px;cursor:pointer;transition:.2s border-color}
+.header-print:hover{border-color:var(--cyan)}
+@media(max-width:800px){.header-print{margin-right:8px;padding:7px 9px;font-size:9px}}
 .hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1.18fr .82fr;align-items:center;gap:70px;padding:74px 0 82px}
 .eyebrow{font-size:10px;letter-spacing:.2em;color:var(--cyan);font-weight:800}
 .eyebrow span{display:inline-block;width:26px;height:1px;background:var(--cyan);vertical-align:middle;margin-right:9px}
@@ -112,3 +115,26 @@ a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
   .topbar{position:relative}.topbar nav{display:none}.header-actions{margin-left:auto}.hero{padding-top:55px}.actions .btn{width:100%}.hero-proof{font-size:9px}.metrics{margin-top:0}.section-heading h2{font-size:39px}.project-card{min-height:215px}.contact-strip h2{font-size:34px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card,.btn{transition:none}}
+
+/* ── Print: одна сторінка A4 ─────────────────────────────── */
+.print-sheet{display:none}
+@media print{
+  @page{size:A4;margin:14mm 15mm}
+  html,body{background:#fff!important;color:#1b2230}
+  .site>*:not(.print-sheet){display:none!important}
+  .site{width:auto;padding:0}
+  .print-sheet{display:block;font:10.5pt/1.45 Inter,"Segoe UI",Arial,sans-serif;color:#1b2230}
+  .print-sheet h1{font-family:'Space Grotesk',Inter,sans-serif;font-size:24pt;line-height:1;margin:0;letter-spacing:-.02em;color:#0b1a2b}
+  .print-sheet h2{font-size:8.5pt;letter-spacing:.16em;text-transform:uppercase;color:#0b6f93;margin:12pt 0 4pt;padding-bottom:2pt;border-bottom:1px solid #cfdde8}
+  .print-sheet p{margin:0 0 4pt}
+  .ps-head{display:flex;justify-content:space-between;gap:16pt;align-items:flex-end;padding-bottom:8pt;border-bottom:2px solid #0b6f93}
+  .ps-role{margin:5pt 0 0!important;font-weight:700;color:#0b6f93}
+  .ps-contacts{list-style:none;margin:0;padding:0;text-align:right;font-size:8.5pt;line-height:1.5;color:#3d4b5c}
+  .ps-summary{margin-top:9pt!important}
+  .ps-project{margin-bottom:5pt;break-inside:avoid}
+  .ps-project p{margin:1pt 0 0}
+  .ps-muted{color:#5d6b7c}
+  .ps-cols{display:grid;grid-template-columns:1fr 1fr;gap:16pt}
+  .ps-job{break-inside:avoid}
+  .ps-foot{margin-top:10pt!important;font-size:8.5pt;color:#5d6b7c}
+}
