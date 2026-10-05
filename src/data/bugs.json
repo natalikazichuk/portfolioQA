@@ -9,5 +9,9 @@
  {"id":"NAV-006","title":"Name field accepts a single character","severity":"Low","status":"Reported","project":"Navkolo"},
  {"id":"NAV-007","title":"Name field has no maximum length","severity":"Low","status":"Reported","project":"Navkolo"},
  {"id":"NAV-008","title":"Same generic login error shown under both fields","severity":"Low","status":"Reported","project":"Navkolo"},
- {"id":"NAV-009","title":"Required fields not marked, no hints or password requirements","severity":"Low","status":"Reported","project":"Navkolo"}
+ {"id":"NAV-009","title":"Required fields not marked, no hints or password requirements","severity":"Low","status":"Reported","project":"Navkolo"},
+ {"id":"G99-001","title":"Valid customer creation fails with raw DB error exposing DB user","severity":"High","status":"Reported","project":"Guru99 Bank"},
+ {"id":"G99-002","title":"Address field accepts blank, leading space and special characters","severity":"Medium","status":"Reported","project":"Guru99 Bank"},
+ {"id":"G99-003","title":"Leading space in form fields shows wrong or no error","severity":"Low","status":"Reported","project":"Guru99 Bank"},
+ {"id":"G99-004","title":"Wrong error text for letters in PIN and Telephone","severity":"Low","status":"Reported","project":"Guru99 Bank"}
 ]
