@@ -35,13 +35,15 @@
     },
     {
       "role": "Senior Manager, Retail Administrator",
-      "company": "Retail store (sole proprietor S. M. Beskorovainyi)",
+      "company": "Retail store",
       "place": "Rivne",
-      "did": "Served customers on the sales floor, trained staff and checked their work, kept accounting reports.",
+      "did": "Ran the sales floor of a store with a large product range: goods receiving and checking deliveries against invoices, regular stock inventories, staff training and accounting reports.",
       "qa": [
+        "Goods receiving: checking every delivery against the invoice, the same expected-vs-actual habit as acceptance testing",
+        "Stock inventories: reconciling records with what is really on the shelf and finding where the numbers break",
+        "Large product range handled with checklists and system, not memory",
         "Looking at the product from the customer's side, the core of UX testing",
-        "Training people and checking work against standards, the habit behind reviews and checklists",
-        "Accurate reporting under deadlines"
+        "Training staff and checking work against standards, the habit behind reviews"
       ]
     }
   ]
