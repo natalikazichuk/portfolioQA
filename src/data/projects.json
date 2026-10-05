@@ -1,7 +1,7 @@
 [
-  {"id":"veteran-job-portal","title":"VeteranJobPortal","icon":"🏰","status":"TESTED","type":"Web Application","featured":true},
-  {"id":"navkolo","title":"Navkolo","icon":"📊","status":"TESTED","type":"SaaS · Accounting & Trade","featured":false},
-  {"id":"guru99","title":"Guru99 Bank","icon":"🏦","status":"TESTED","type":"Banking Web App · Training","featured":false},
+  {"id":"veteran-job-portal","title":"VeteranJobPortal","icon":"🏰","status":"TESTED","type":"Web Application","featured":true,"image":"projects/veteran-job-portal.webp"},
+  {"id":"navkolo","title":"Navkolo","icon":"📊","status":"TESTED","type":"SaaS · Accounting & Trade","featured":false,"image":"projects/navkolo.webp"},
+  {"id":"guru99","title":"Guru99 Bank","icon":"🏦","status":"TESTED","type":"Banking Web App · Training","featured":false,"image":"projects/guru99.webp"},
   {"id":"snake-eye","title":"Snake Eye","icon":"🐍","status":"IN PROGRESS","type":"Data / Web Project","featured":false},
   {"id":"schoolkingdoms","title":"SchoolKingdoms","icon":"🏫","status":"IN PROGRESS","type":"Educational Platform","featured":false}
 ]
