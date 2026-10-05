@@ -26,11 +26,12 @@
       "role": "Trade Department Manager",
       "company": "Construction company “Avtoritet”",
       "place": "Rivne",
-      "did": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region; kept the client database, contracts, accounting documents and order follow-up.",
+      "did": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region: built and analysed the client database, handled objections in negotiations, ran contracts, accounting documents, order follow-up and internal processes.",
       "qa": [
-        "End-to-end process thinking: order → contract → delivery → documents",
-        "Structured data work: a client database kept clean and up to date",
-        "Negotiating with many stakeholders and following every request to closure"
+        "Building and analysing the client database: segmenting data, spotting gaps and duplicates, the same eye I use on test data",
+        "Handling objections: hearing the real concern behind a \"no\" and answering with facts, which is how I discuss bug severity with developers",
+        "Internal processes: order → contract → delivery → documents, end-to-end thinking for testing business flows",
+        "Working with many stakeholders and following every request to closure"
       ]
     },
     {
