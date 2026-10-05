@@ -4,6 +4,7 @@ import './styles.css';
 import projects from './data/projects.json';
 import skills from './data/skills.json';
 import profile from './data/profile.json';
+import experience from './data/experience.json';
 
 const projectLinks = {
   'veteran-job-portal': 'https://github.com/natalikazichuk/veteran-jobs-portal-testing',
@@ -45,6 +46,7 @@ function Header({ view }) {
         {view === 'home' ? <>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
+          <a href="#background">Background</a>
           <a href="#evidence">Evidence</a>
           <a href="#about">About</a>
         </> : <a href="#">← Portfolio</a>}
@@ -139,10 +141,30 @@ function Home() {
         </div>
       </section>
 
+      <section id="background" className="section background-section">
+        <div className="section-heading">
+          <div><div className="eyebrow">03 / BACKGROUND</div><h2>Before QA</h2></div>
+          <p>Banking, B2B sales and retail: working with customers, documents and processes is where my QA instincts come from.</p>
+        </div>
+        <div className="job-list">
+          {experience.jobs.map(j=><article className="job-card" key={j.company}>
+            <div className="job-meta"><span>{j.place}</span></div>
+            <h3>{j.role}</h3>
+            <p className="job-company">{j.company}</p>
+            <p className="job-did">{j.did}</p>
+            <ul>{j.qa.map(q=><li key={q}>{q}</li>)}</ul>
+          </article>)}
+        </div>
+        <div className="soft-skills">
+          <span className="eyebrow">SOFT SKILLS</span>
+          <div className="chips">{experience.softSkills.map(s=><span key={s}>{s}</span>)}</div>
+        </div>
+      </section>
+
       <section id="evidence" className="section evidence-section">
         <div className="evidence-card">
           <div className="evidence-copy">
-            <div className="eyebrow">03 / PROOF OF WORK</div>
+            <div className="eyebrow">04 / PROOF OF WORK</div>
             <h2>One bug can change the whole story.</h2>
             <p>{profile.highlights[0]}</p>
             <div className="bug-row">
@@ -156,7 +178,7 @@ function Home() {
       </section>
 
       <section id="about" className="section about-section">
-        <div><div className="eyebrow">04 / ABOUT</div><h2>Quality is not an accident.</h2></div>
+        <div><div className="eyebrow">05 / ABOUT</div><h2>Quality is not an accident.</h2></div>
         <div>
           <p>{profile.summary}</p>
           <div className="about-points">
@@ -190,6 +212,8 @@ function Recruiter() {
       <section><span className="eyebrow">KEY EVIDENCE</span><ul>{profile.highlights.map(h=><li key={h}>{h}</li>)}</ul></section>
       <section><span className="eyebrow">BEST CASE</span><h2>{best.icon} {best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a>{best.id==='veteran-job-portal' && <> · <a className="text-link" href={vjpDocsLink} target="_blank" rel="noopener noreferrer">Test plan, cases &amp; RTM →</a></>}</section>
       <section><span className="eyebrow">TOOLS</span><div className="chips">{profile.tools.map(t=><span key={t}>{t}</span>)}</div></section>
+      <section><span className="eyebrow">BACKGROUND</span><ul>{experience.jobs.map(j=><li key={j.company}>{j.role} · {j.company}</li>)}</ul></section>
+      <section><span className="eyebrow">SOFT SKILLS</span><div className="chips">{experience.softSkills.map(t=><span key={t}>{t}</span>)}</div></section>
     </div>
   </div>;
 }

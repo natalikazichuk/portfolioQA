@@ -1,0 +1,48 @@
+{
+  "softSkills": [
+    "Attention to detail",
+    "Critical thinking & analysis",
+    "Clear communication",
+    "Teamwork",
+    "Adaptability",
+    "Active learning",
+    "Initiative",
+    "Persistence",
+    "Trustworthiness"
+  ],
+  "jobs": [
+    {
+      "role": "Account Manager",
+      "company": "PrivatBank",
+      "place": "Rivne",
+      "did": "Issued consumer loans at bank points inside Foxtrot, Eldorado, Comfy and KTS stores; set up cards, deposits and other banking products.",
+      "qa": [
+        "Zero-error paperwork: every loan file had to match bank rules before sign-off",
+        "Explaining complex products in plain words, the same skill as a clear bug report",
+        "Banking domain knowledge I reuse when testing fintech flows"
+      ]
+    },
+    {
+      "role": "Trade Department Manager",
+      "company": "Construction company “Avtoritet”",
+      "place": "Rivne",
+      "did": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region; kept the client database, contracts, accounting documents and order follow-up.",
+      "qa": [
+        "End-to-end process thinking: order → contract → delivery → documents",
+        "Structured data work: a client database kept clean and up to date",
+        "Negotiating with many stakeholders and following every request to closure"
+      ]
+    },
+    {
+      "role": "Senior Manager, Retail Administrator",
+      "company": "Retail store (sole proprietor S. M. Beskorovainyi)",
+      "place": "Rivne",
+      "did": "Served customers on the sales floor, trained staff and checked their work, kept accounting reports.",
+      "qa": [
+        "Looking at the product from the customer's side, the core of UX testing",
+        "Training people and checking work against standards, the habit behind reviews and checklists",
+        "Accurate reporting under deadlines"
+      ]
+    }
+  ]
+}
