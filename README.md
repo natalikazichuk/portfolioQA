@@ -1,4 +1,4 @@
-# QA NK
+# QA Natali Kazichuk
 
 Interactive QA Portfolio by Natali.
 
