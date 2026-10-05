@@ -7,9 +7,12 @@ import profile from './data/profile.json';
 
 const projectLinks = {
   'veteran-job-portal': 'https://github.com/natalikazichuk/veteran-jobs-portal-testing',
+  navkolo: 'https://github.com/natalikazichuk/portfolioQA/blob/main/docs/navkolo/README.md',
   'snake-eye': 'https://github.com/natalikazichuk/Snake-Eye',
   schoolkingdoms: 'https://github.com/natalikazichuk/schoolkingdoms'
 };
+
+const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA/blob/main/docs/vjp/README.md';
 
 const getView = () => (window.location.hash === '#recruiter' ? 'recruiter' : 'home');
 
@@ -107,7 +110,7 @@ function Home() {
       </section>
 
       <section className="metrics" aria-label="Portfolio metrics">
-        <Metric value="3" label="PRODUCTS TESTED" />
+        <Metric value={projects.length} label="PRODUCTS TESTED" />
         <Metric value="100+" label="TEST CASES" />
         <Metric value="20+" label="ISSUES FOUND" />
         <Metric value="50+" label="API CHECKS" />
@@ -116,7 +119,7 @@ function Home() {
       <section id="projects" className="section">
         <div className="section-heading">
           <div><div className="eyebrow">01 / EXPERIENCE</div><h2>QA Projects</h2></div>
-          <p>Hands-on testing across web applications, data projects and an educational platform.</p>
+          <p>Hands-on testing across web applications, a business SaaS, data projects and an educational platform.</p>
         </div>
         <div className="project-grid">{projects.map((p,i)=><ProjectCard p={p} index={i} key={p.id}/>)}</div>
       </section>
@@ -183,7 +186,7 @@ function Recruiter() {
     </div>
     <div className="recruit-grid">
       <section><span className="eyebrow">KEY EVIDENCE</span><ul>{profile.highlights.map(h=><li key={h}>{h}</li>)}</ul></section>
-      <section><span className="eyebrow">BEST CASE</span><h2>{best.icon} {best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a></section>
+      <section><span className="eyebrow">BEST CASE</span><h2>{best.icon} {best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a>{best.id==='veteran-job-portal' && <> · <a className="text-link" href={vjpDocsLink} target="_blank" rel="noopener noreferrer">Test plan, cases &amp; RTM →</a></>}</section>
       <section><span className="eyebrow">TOOLS</span><div className="chips">{profile.tools.map(t=><span key={t}>{t}</span>)}</div></section>
     </div>
   </div>;
