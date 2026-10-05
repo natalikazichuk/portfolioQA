@@ -1,0 +1,53 @@
+{
+  "softSkills": [
+    "Attention to detail",
+    "Critical thinking & analysis",
+    "Clear communication",
+    "Teamwork",
+    "Adaptability",
+    "Active learning",
+    "Initiative",
+    "Persistence",
+    "Trustworthiness"
+  ],
+  "jobs": [
+    {
+      "role": "Account Manager",
+      "company": "PrivatBank",
+      "place": "Rivne",
+      "did": "Issued consumer loans at bank points inside Foxtrot, Eldorado, Comfy and KTS stores; set up cards, deposits and other banking products in a bank with a strong corporate culture of honesty, transparency and personal responsibility.",
+      "qa": [
+        "Zero-error paperwork: every loan file had to match bank rules before sign-off",
+        "Honesty and transparency: reporting problems as they are, never hiding a risk, which is what a bug report must do",
+        "Personal responsibility: owning the result of my work up to the final check",
+        "Explaining complex products in plain words, the same skill as a clear bug report",
+        "Banking domain knowledge I reuse when testing fintech flows"
+      ]
+    },
+    {
+      "role": "Trade Department Manager",
+      "company": "Construction company “Avtoritet”",
+      "place": "Rivne",
+      "did": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region: built and analysed the client database, handled objections in negotiations, ran contracts, accounting documents, order follow-up and internal processes.",
+      "qa": [
+        "Building and analysing the client database: segmenting data, spotting gaps and duplicates, the same eye I use on test data",
+        "Handling objections: hearing the real concern behind a \"no\" and answering with facts, which is how I discuss bug severity with developers",
+        "Internal processes: order → contract → delivery → documents, end-to-end thinking for testing business flows",
+        "Working with many stakeholders and following every request to closure"
+      ]
+    },
+    {
+      "role": "Senior Manager, Retail Administrator",
+      "company": "Retail store",
+      "place": "Rivne",
+      "did": "Ran the sales floor of a store with a large product range: goods receiving and checking deliveries against invoices, regular stock inventories, staff training and accounting reports.",
+      "qa": [
+        "Goods receiving: checking every delivery against the invoice, the same expected-vs-actual habit as acceptance testing",
+        "Stock inventories: reconciling records with what is really on the shelf and finding where the numbers break",
+        "Large product range handled with checklists and system, not memory",
+        "Looking at the product from the customer's side, the core of UX testing",
+        "Training staff and checking work against standards, the habit behind reviews"
+      ]
+    }
+  ]
+}
