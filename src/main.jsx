@@ -152,7 +152,8 @@ function Home() {
             <h3>{j.role}</h3>
             <p className="job-company">{j.company}</p>
             <p className="job-did">{j.did}</p>
-            <ul>{j.qa.map(q=><li key={q}>{q}</li>)}</ul>
+            <div className="job-qa-label">USEFUL FOR QA</div>
+            <ul>{j.qa.map(q=><li key={q.tag}><b className="qa-tag">{q.tag}</b><span>{q.text}</span></li>)}</ul>
           </article>)}
         </div>
         <div className="soft-skills">

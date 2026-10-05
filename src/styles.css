@@ -75,8 +75,10 @@ nav a:hover{color:#fff}
 .job-meta{display:flex;justify-content:space-between;gap:10px;font:11px ui-monospace,monospace;color:#55728b}
 .job-card h3{margin:16px 0 4px;font-size:18px}.job-company{margin:0;color:var(--cyan);font-size:12px}
 .job-did{color:#849bb0;font-size:13px;line-height:1.6}
-.job-card ul{margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--line);list-style:none;display:grid;gap:9px}
-.job-card li{position:relative;padding-left:18px;color:#c4d3df;font-size:13px;line-height:1.5}.job-card li:before{content:'✓';position:absolute;left:0;color:var(--cyan)}
+.job-qa-label{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--cyan);font-size:9px;letter-spacing:.16em;font-weight:800}
+.job-card ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+.job-card li{display:flex;flex-direction:column;align-items:flex-start;gap:5px;color:#9fb3c4;font-size:12.5px;line-height:1.5}
+.qa-tag{display:inline-block;color:var(--cyan);background:rgba(98,216,255,.1);border:1px solid #214761;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:700}
 .soft-skills{margin-top:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 @media(max-width:1000px){.job-list{grid-template-columns:1fr}}
 .evidence-section{padding-top:5px}

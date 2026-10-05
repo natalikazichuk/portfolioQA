@@ -17,11 +17,26 @@
       "place": "Rivne",
       "did": "Issued consumer loans at bank points inside Foxtrot, Eldorado, Comfy and KTS stores; set up cards, deposits and other banking products in a bank with a strong corporate culture of honesty, transparency and personal responsibility.",
       "qa": [
-        "Zero-error paperwork: every loan file had to match bank rules before sign-off",
-        "Honesty and transparency: reporting problems as they are, never hiding a risk, which is what a bug report must do",
-        "Personal responsibility: owning the result of my work up to the final check",
-        "Explaining complex products in plain words, the same skill as a clear bug report",
-        "Banking domain knowledge I reuse when testing fintech flows"
+        {
+          "text": "Zero-error paperwork: every loan file had to match bank rules before sign-off",
+          "tag": "Attention to detail"
+        },
+        {
+          "text": "Reporting problems as they are and never hiding a risk",
+          "tag": "Honest bug reporting"
+        },
+        {
+          "text": "Owning the result of my work up to the final check",
+          "tag": "Quality ownership"
+        },
+        {
+          "text": "Explaining complex products in plain words",
+          "tag": "Clear bug reports"
+        },
+        {
+          "text": "Loans, cards, deposits from the inside",
+          "tag": "Fintech domain"
+        }
       ]
     },
     {
@@ -30,10 +45,22 @@
       "place": "Rivne",
       "did": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region: built and analysed the client database, handled objections in negotiations, ran contracts, accounting documents, order follow-up and internal processes.",
       "qa": [
-        "Building and analysing the client database: segmenting data, spotting gaps and duplicates, the same eye I use on test data",
-        "Handling objections: hearing the real concern behind a \"no\" and answering with facts, which is how I discuss bug severity with developers",
-        "Internal processes: order → contract → delivery → documents, end-to-end thinking for testing business flows",
-        "Working with many stakeholders and following every request to closure"
+        {
+          "text": "Building and analysing the client database: segments, gaps, duplicates",
+          "tag": "Test data analysis"
+        },
+        {
+          "text": "Hearing the real concern behind a \"no\" and answering with facts",
+          "tag": "Defending bug severity"
+        },
+        {
+          "text": "Order → contract → delivery → documents",
+          "tag": "End-to-end flows"
+        },
+        {
+          "text": "Many stakeholders, every request followed to closure",
+          "tag": "Bug lifecycle"
+        }
       ]
     },
     {
@@ -42,11 +69,26 @@
       "place": "Rivne",
       "did": "Ran the sales floor of a store with a large product range: goods receiving and checking deliveries against invoices, regular stock inventories, staff training and accounting reports.",
       "qa": [
-        "Goods receiving: checking every delivery against the invoice, the same expected-vs-actual habit as acceptance testing",
-        "Stock inventories: reconciling records with what is really on the shelf and finding where the numbers break",
-        "Large product range handled with checklists and system, not memory",
-        "Looking at the product from the customer's side, the core of UX testing",
-        "Training staff and checking work against standards, the habit behind reviews"
+        {
+          "text": "Checking every delivery against the invoice",
+          "tag": "Expected vs actual"
+        },
+        {
+          "text": "Reconciling records with what is really on the shelf",
+          "tag": "Data verification"
+        },
+        {
+          "text": "Large product range handled with checklists, not memory",
+          "tag": "Checklists"
+        },
+        {
+          "text": "Looking at the product from the customer's side",
+          "tag": "UX testing"
+        },
+        {
+          "text": "Training staff and checking work against standards",
+          "tag": "Reviews"
+        }
       ]
     }
   ]
