@@ -65,7 +65,7 @@ function Metric({value,label}) {
 
 function ProjectCard({p,index}) {
   const href = projectLinks[p.id];
-  const style = p.image ? {'--shot': `url(${import.meta.env.BASE_URL}${p.image})`} : undefined;
+  const style = p.image ? {'--shot': `url(${import.meta.env.BASE_URL}${p.image})`, '--shot-pos': p.imagePosition || 'center top'} : undefined;
   return (
     <a className={'project-card'+(p.featured?' featured':'')+(p.image?' has-shot':'')} style={style} href={href} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + p.title + ' project'}>
       <div className="project-top">
