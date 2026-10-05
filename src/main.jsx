@@ -11,8 +11,8 @@ const projectLinks = {
   navkolo: 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/navkolo/README.md',
   guru99: 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/guru99/README.md',
   'snake-eye': 'https://github.com/natalikazichuk/Snake-Eye',
-  // SchoolKingdoms: посилання вимкнене, поки не опубліковано демо (schoolkingdoms-demo)
-  schoolkingdoms: null
+  // демо-версія (1 клас, без реєстрації); повний код — natalikazichuk/schoolkingdoms
+  schoolkingdoms: 'https://natalikazichuk.github.io/schoolkingdoms-demo/'
 };
 
 const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/vjp/README.md';
