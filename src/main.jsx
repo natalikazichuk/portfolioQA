@@ -30,6 +30,11 @@ function SkillLinks({ projects: ids, background }) {
   </div>;
 }
 
+const checklists = [
+  { id: 'login-form', title: 'Login form testing', fields: 'Email · Password · Confirm password · Forgot password / No account / Need help links',
+    meta: '69 checks · 9 sections · P1–P3 priorities · test data', pages: 4 }
+];
+
 const getView = () => (window.location.hash === '#recruiter' ? 'recruiter' : 'home');
 
 function useView() {
@@ -54,6 +59,7 @@ function Header({ view }) {
         {view === 'home' ? <>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
+          <a href="#checklists">Checklists</a>
           <a href="#background">Background</a>
           <a href="#evidence">Evidence</a>
           <a href="#about">About</a>
@@ -195,10 +201,33 @@ function Home() {
         </div>
       </section>
 
+      <section id="checklists" className="section checklists-section">
+        <div className="section-heading">
+          <div><div className="eyebrow">03 / CHECKLISTS</div><h2>My Checklists</h2></div>
+          <p>Printable A4 checklists I use for manual testing. Click a page to open it full size.</p>
+        </div>
+        {checklists.map(c => <article className="checklist-card" key={c.id}>
+          <div className="checklist-head">
+            <h3>{c.title}</h3>
+            <p>{c.fields}</p>
+            <span>{c.meta}</span>
+          </div>
+          <div className="a4-grid">
+            {Array.from({ length: c.pages }, (_, i) => {
+              const src = `${import.meta.env.BASE_URL}checklists/${c.id}/page-${i + 1}.webp`;
+              return <a className="a4-page" key={i} href={src} target="_blank" rel="noopener noreferrer" aria-label={`${c.title}, A4 page ${i + 1} of ${c.pages}`}>
+                <img src={src} alt={`${c.title} checklist, A4 page ${i + 1} of ${c.pages}`} loading="lazy" width="1240" height="1754" />
+                <span>A4 · {i + 1}/{c.pages}</span>
+              </a>;
+            })}
+          </div>
+        </article>)}
+      </section>
+
       <section id="evidence" className="section evidence-section">
         <div className="evidence-card">
           <div className="evidence-copy">
-            <div className="eyebrow">03 / PROOF OF WORK</div>
+            <div className="eyebrow">04 / PROOF OF WORK</div>
             <h2>One bug can change the whole story.</h2>
             <p>{profile.highlights[0]}</p>
             <div className="bug-row">
@@ -212,7 +241,7 @@ function Home() {
       </section>
 
       <section id="about" className="section about-section">
-        <div><div className="eyebrow">04 / ABOUT</div><h2>Quality is not an accident.</h2></div>
+        <div><div className="eyebrow">05 / ABOUT</div><h2>Quality is not an accident.</h2></div>
         <div>
           <p>{profile.summary}</p>
           <div className="about-points">
