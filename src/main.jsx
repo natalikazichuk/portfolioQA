@@ -31,8 +31,8 @@ function SkillLinks({ projects: ids, background }) {
 }
 
 const checklists = [
-  { id: 'login-form', title: 'Login form testing', fields: 'Email · Password · Confirm password · Forgot password / No account / Need help links',
-    meta: '69 checks · 9 sections · P1–P3 priorities · test data', pages: 4 }
+  { id: 'login-form', title: 'Login form testing', fields: 'Email · Password · Confirm password · Forgot password / No account / Need help links · Remember me · Logout',
+    meta: '77 checks · 10 sections · priority & severity · test data', pages: 4 }
 ];
 
 const getView = () => (window.location.hash === '#recruiter' ? 'recruiter' : 'home');
