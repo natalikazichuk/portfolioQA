@@ -1,17 +1,8 @@
 {
-  "softSkills": [
-    "Attention to detail",
-    "Critical thinking & analysis",
-    "Clear communication",
-    "Teamwork",
-    "Adaptability",
-    "Active learning",
-    "Initiative",
-    "Persistence",
-    "Trustworthiness"
-  ],
   "jobs": [
     {
+      "id": "privatbank",
+      "short": "PrivatBank",
       "role": "Account Manager",
       "company": "PrivatBank",
       "place": "Rivne",
@@ -40,6 +31,8 @@
       ]
     },
     {
+      "id": "avtoritet",
+      "short": "Avtoritet",
       "role": "Trade Department Manager",
       "company": "Construction company “Avtoritet”",
       "place": "Rivne",
@@ -64,6 +57,8 @@
       ]
     },
     {
+      "id": "retail",
+      "short": "Retail",
       "role": "Senior Manager, Retail Administrator",
       "company": "Retail store",
       "place": "Rivne",

@@ -17,6 +17,21 @@ const projectLinks = {
 
 const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/vjp/README.md';
 
+const projectTitle = Object.fromEntries(projects.map(p => [p.id, p.title]));
+const jobShort = Object.fromEntries(experience.jobs.map(j => [j.id, j.short]));
+const softSkills = skills.soft.map(s => s.name);
+const skillsFromJob = id => [...skills.hard, ...skills.soft].filter(s => s.background.includes(id)).map(s => s.name);
+
+function SkillLinks({ projects: ids, background }) {
+  if (!ids.length && !background.length) return <div className="skill-links"><span className="chip-soon">Case study coming soon</span></div>;
+  return <div className="skill-links">
+    {ids.map(id => projectLinks[id]
+      ? <a className="chip-project" key={id} href={projectLinks[id]} target="_blank" rel="noopener noreferrer">{projectTitle[id]} ↗</a>
+      : <b className="chip-project" key={id}>{projectTitle[id]}</b>)}
+    {background.map(id => <a className="chip-job" key={id} href="#background">{jobShort[id]}</a>)}
+  </div>;
+}
+
 const getView = () => (window.location.hash === '#recruiter' ? 'recruiter' : 'home');
 
 function useView() {
@@ -136,42 +151,62 @@ function Home() {
 
       <section id="skills" className="section skills-section">
         <div className="section-heading">
-          <div><div className="eyebrow">02 / CAPABILITIES</div><h2>QA Skills</h2></div>
-          <p>From exploratory testing and test design to APIs and AI response evaluation.</p>
+          <div><div className="eyebrow">02 / CAPABILITIES &amp; BACKGROUND</div><h2>QA Skills</h2></div>
+          <p>Each skill is linked to the projects where I used it and to the job before QA where it comes from.</p>
         </div>
-        <div className="skills-grid">
-          {skills.map((s)=><div className="skill-card" key={s.name}>
-            <div className="skill-head"><span>{s.icon} {s.name}</span><b>{s.level}%</b></div>
-            <div className="bar"><i style={{width:s.level+'%'}} /></div>
-          </div>)}
+        <div className="skill-legend">
+          <span><b className="chip-project">Project</b> applied in</span>
+          <span><b className="chip-job">Job</b> comes from</span>
         </div>
-      </section>
+        <div className="skill-groups">
+          <div className="skill-group">
+            <div className="skill-group-head"><span className="eyebrow">HARD / TECH SKILLS</span><small>{skills.hard.length}</small></div>
+            {skills.hard.map(s=><div className="skill-card" key={s.name}>
+              <div className="skill-head"><span>{s.icon} {s.name}</span>{s.level && <b>{s.level}%</b>}</div>
+              {s.level && <div className="bar"><i style={{width:s.level+'%'}} /></div>}
+              <p className="skill-note">{s.note}</p>
+              <SkillLinks projects={s.projects} background={s.background} />
+            </div>)}
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-head"><span className="eyebrow">SOFT SKILLS</span><small>{skills.soft.length}</small></div>
+            {skills.soft.map(s=><div className="skill-card soft" key={s.name}>
+              <div className="skill-head"><span>{s.name}</span></div>
+              <dl className="skill-trace">
+                <dt>Before QA</dt><dd>{s.from}</dd>
+                <dt>In QA</dt><dd>{s.qa}</dd>
+              </dl>
+              <SkillLinks projects={s.projects} background={s.background} />
+            </div>)}
+          </div>
+        </div>
 
-      <section id="background" className="section background-section">
-        <div className="section-heading">
-          <div><div className="eyebrow">03 / BACKGROUND</div><h2>Before QA</h2></div>
-          <p>Banking, B2B sales and retail: working with customers, documents and processes is where my QA instincts come from.</p>
-        </div>
-        <div className="job-list">
-          {experience.jobs.map(j=><article className="job-card" key={j.company}>
-            <div className="job-meta"><span>{j.place}</span></div>
-            <h3>{j.role}</h3>
-            <p className="job-company">{j.company}</p>
-            <p className="job-did">{j.did}</p>
-            <div className="job-qa-label">USEFUL FOR QA</div>
-            <ul>{j.qa.map(q=><li key={q.tag}><b className="qa-tag">{q.tag}</b><span>{q.text}</span></li>)}</ul>
-          </article>)}
-        </div>
-        <div className="soft-skills">
-          <span className="eyebrow">SOFT SKILLS</span>
-          <div className="chips">{experience.softSkills.map(s=><span key={s}>{s}</span>)}</div>
+        <div id="background" className="background-sub">
+          <div className="sub-heading">
+            <div><div className="eyebrow">WHERE IT COMES FROM</div><h3>Before QA</h3></div>
+            <p>Banking, B2B sales and retail: working with customers, documents and processes is where my QA instincts come from.</p>
+          </div>
+          <div className="job-list">
+            {experience.jobs.map(j=><article className="job-card" key={j.id}>
+              <div className="job-meta"><span>{j.place}</span></div>
+              <h3>{j.role}</h3>
+              <p className="job-company">{j.company}</p>
+              <p className="job-did">{j.did}</p>
+              <div className="job-qa-label">USEFUL FOR QA</div>
+              <ul>{j.qa.map(q=><li key={q.tag}><b className="qa-tag">{q.tag}</b><span>{q.text}</span></li>)}</ul>
+              <div className="job-skills">
+                <span>Skills it built</span>
+                <div className="skill-links">{skillsFromJob(j.id).map(n=><b className="chip-skill" key={n}>{n}</b>)}</div>
+              </div>
+            </article>)}
+          </div>
         </div>
       </section>
 
       <section id="evidence" className="section evidence-section">
         <div className="evidence-card">
           <div className="evidence-copy">
-            <div className="eyebrow">04 / PROOF OF WORK</div>
+            <div className="eyebrow">03 / PROOF OF WORK</div>
             <h2>One bug can change the whole story.</h2>
             <p>{profile.highlights[0]}</p>
             <div className="bug-row">
@@ -185,7 +220,7 @@ function Home() {
       </section>
 
       <section id="about" className="section about-section">
-        <div><div className="eyebrow">05 / ABOUT</div><h2>Quality is not an accident.</h2></div>
+        <div><div className="eyebrow">04 / ABOUT</div><h2>Quality is not an accident.</h2></div>
         <div>
           <p>{profile.summary}</p>
           <div className="about-points">
@@ -219,8 +254,8 @@ function Recruiter() {
       <section><span className="eyebrow">KEY EVIDENCE</span><ul>{profile.highlights.map(h=><li key={h}>{h}</li>)}</ul></section>
       <section><span className="eyebrow">BEST CASE</span><h2 className="project-name">{best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a>{best.id==='veteran-job-portal' && <> · <a className="text-link" href={vjpDocsLink} target="_blank" rel="noopener noreferrer">Test plan, cases &amp; RTM →</a></>}</section>
       <section><span className="eyebrow">TOOLS</span><div className="chips">{profile.tools.map(t=><span key={t}>{t}</span>)}</div></section>
-      <section><span className="eyebrow">BACKGROUND</span><ul>{experience.jobs.map(j=><li key={j.company}>{j.role} · {j.company}</li>)}</ul></section>
-      <section><span className="eyebrow">SOFT SKILLS</span><div className="chips">{experience.softSkills.map(t=><span key={t}>{t}</span>)}</div></section>
+      <section><span className="eyebrow">BACKGROUND</span><ul>{experience.jobs.map(j=><li key={j.id}>{j.role} · {j.company}</li>)}</ul></section>
+      <section><span className="eyebrow">SOFT SKILLS</span><div className="chips">{softSkills.map(t=><span key={t}>{t}</span>)}</div></section>
     </div>
   </div>;
 }
@@ -259,7 +294,7 @@ function PrintSheet() {
     <div className="ps-cols">
       <div>
         <h2>Skills</h2>
-        <p>{skills.map(s => s.name).join(' · ')}</p>
+        <p>{skills.hard.map(s => s.name).join(' · ')}</p>
         <h2>Tools</h2>
         <p>{[...profile.tools, 'Jira', 'SQL'].join(' · ')}</p>
       </div>
@@ -273,7 +308,7 @@ function PrintSheet() {
     </div>
 
     <h2>Soft skills</h2>
-    <p>{experience.softSkills.join(' · ')}</p>
+    <p>{softSkills.join(' · ')}</p>
     <p className="ps-foot">Full portfolio with case studies and test documentation: {PORTFOLIO_URL}</p>
   </div>;
 }
