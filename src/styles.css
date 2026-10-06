@@ -25,8 +25,8 @@ nav a:hover{color:#fff}
 .hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1.18fr .82fr;align-items:center;gap:70px;padding:74px 0 82px}
 .eyebrow{font-size:10px;letter-spacing:.2em;color:var(--cyan);font-weight:800}
 .eyebrow span{display:inline-block;width:26px;height:1px;background:var(--cyan);vertical-align:middle;margin-right:9px}
-.hero h1,.recruiter-page h1{font-size:clamp(58px,8vw,104px);line-height:.9;letter-spacing:-.055em;margin:22px 0}
-.hero h1 em,.recruiter-page h1 em{font-style:normal;color:var(--cyan)}
+.hero h1{font-size:clamp(58px,8vw,104px);line-height:.9;letter-spacing:-.055em;margin:22px 0}
+.hero h1 em{font-style:normal;color:var(--cyan)}
 .hero-lead{font-size:18px;color:#dce8f4;margin:0 0 12px;font-weight:700}
 .hero-text{max-width:650px;color:var(--muted);font-size:15px;line-height:1.75;margin:0}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:27px}
@@ -120,10 +120,6 @@ a.chip-project:hover,a.chip-job:hover{border-color:currentColor}
 .about-points span{font:10px ui-monospace,monospace;color:var(--cyan);padding-top:3px}.about-points p{margin:0;color:#91a7ba;font-size:12px;line-height:1.55}
 .contact-strip{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:55px 0}
 .contact-strip h2{font-size:clamp(32px,4vw,48px)}
-.recruiter-page{padding:90px 0 115px}.recruiter-page h1{font-size:clamp(55px,8vw,90px)}
-.recruit-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:15px;margin-top:65px}
-.recruit-grid section{padding:24px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
-.recruit-grid ul{padding-left:18px;color:#a9bac9;line-height:1.8;font-size:13px}.recruit-grid h2{font-size:24px}.recruit-grid p{color:var(--muted);line-height:1.6}
 .text-link{color:var(--cyan);font-size:11px;font-weight:800;text-decoration:none}.chips{display:flex;flex-wrap:wrap;gap:7px}.chips span{border:1px solid #25445d;border-radius:999px;padding:7px 10px;font-size:10px;color:#c4d3df}
 footer{display:flex;justify-content:space-between;gap:15px;padding:28px 0;color:#60768a;border-top:1px solid var(--line);font-size:10px;letter-spacing:.06em}
 .skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;z-index:50;padding:10px;background:var(--cyan);color:#04101b}
@@ -134,32 +130,74 @@ a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
   .metrics{grid-template-columns:1fr 1fr;gap:0}.metric{padding:15px 12px}.metric:nth-child(2){border-right:0}.metric:nth-child(3),.metric:nth-child(4){border-top:1px solid var(--line)}.metric strong{font-size:25px}
   .section{padding:70px 0}.section-heading{display:block}.section-heading>p{margin-top:12px}.project-grid{grid-template-columns:1fr}.project-card.featured{grid-column:auto}.project-card{min-height:225px}.sub-heading{display:block}.sub-heading>p{margin-top:12px}
   .evidence-card{padding:27px;display:block}.bug-mark{display:none}.evidence-card>div p{font-size:14px}.verified{margin-left:0}.about-section{grid-template-columns:1fr;gap:15px}.contact-strip{display:block;padding:45px 0}.contact-strip .btn{margin-top:18px}
-  .recruiter-page{padding:70px 0}.recruit-grid{grid-template-columns:1fr;margin-top:45px}.recruiter-page h1{font-size:clamp(48px,14vw,68px)}footer{flex-direction:column}
+  footer{flex-direction:column}
 }
 @media(max-width:480px){
   .topbar{position:relative}.topbar nav{display:none}.header-actions{margin-left:auto}.hero{padding-top:55px}.actions .btn{width:100%}.hero-proof{font-size:9px}.metrics{margin-top:0}.section-heading h2{font-size:39px}.project-card{min-height:215px}.contact-strip h2{font-size:34px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card,.btn{transition:none}}
 
-/* ── Print: одна сторінка A4 ─────────────────────────────── */
-.print-sheet{display:none}
+/* ── Resume: Recruiter mode (екран) + друк A4 ───────────── */
+.recruiter-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:10px 0}
+.recruiter-actions{display:flex;gap:10px;flex-wrap:wrap}
+.recruiter-actions .btn{min-height:36px;font:inherit;font-size:10px;font-weight:900;letter-spacing:.06em;border:0;cursor:pointer}
+.recruiter-actions .btn-ghost{border:1px solid #2b506e}
+.resume{display:none;--ink:#eef5ff;--soft:#a9bac9;--muted:#7891a7;--accent:var(--cyan);--rule:var(--line);--chip:#25445d}
+.resume.on-screen{display:flex;flex-direction:column;min-height:calc(100vh - 72px - 74px);margin-bottom:16px;padding:24px 28px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,var(--panel2),var(--panel));font-size:12.5px;line-height:1.45;color:var(--soft)}
+.resume h1{font-family:'Space Grotesk',Inter,sans-serif;font-size:30px;line-height:1;margin:0;letter-spacing:-.02em;color:var(--ink)}
+.resume h2{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--rule)}
+.resume p{margin:0 0 4px}
+.resume a{color:inherit;text-decoration:none}.resume a:hover{color:var(--accent)}
+.rs-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+.rs-role{margin:6px 0 0!important;font-weight:700;color:var(--accent)}
+.rs-contacts{list-style:none;margin:0;padding:0;text-align:right;font-size:11.5px;line-height:1.6;color:var(--ink)}
+.rs-contacts span{color:var(--muted);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.rs-summary{margin-top:10px!important;color:var(--ink)}
+.rs-cols{display:grid;grid-template-columns:1.75fr 1fr;gap:28px}
+.rs-item{margin-bottom:7px;break-inside:avoid}
+.rs-item-head{display:flex;justify-content:space-between;gap:0 10px;flex-wrap:wrap}
+.rs-item-head b{color:var(--ink)}.rs-item-head span{color:var(--muted);font-size:11px}
+.rs-item p{margin:1px 0 0}
+.rs-muted{color:var(--muted);font-size:11px}
+.resume .rs-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px}
+.resume .rs-list li{margin:0;border:1px solid var(--chip);border-radius:999px;padding:2px 9px;font-size:11px;color:var(--ink)}
+/* Recruiter mode: світла тема (резюме як аркуш паперу) */
+html[data-theme=light]{color:#1b2230;background:#e9eef3}
+html[data-theme=light] body{background:#e9eef3}
+html[data-theme=light] body:before{display:none}
+html[data-theme=light] .topbar{background:rgba(233,238,243,.88);border-bottom-color:#cfdbe6}
+html[data-theme=light] .brand{color:#0b1a2b}
+html[data-theme=light] .brand-mark,html[data-theme=light] .header-print{color:#0b6f93;border-color:#9fc3d6;box-shadow:none}
+html[data-theme=light] nav a{color:#3d4b5c}html[data-theme=light] nav a:hover{color:#0b1a2b}
+html[data-theme=light] .availability{color:#5d6b7c}
+html[data-theme=light] .header-cta,html[data-theme=light] .btn-primary{background:#0b6f93;color:#fff;box-shadow:none}
+html[data-theme=light] .btn-ghost,html[data-theme=light] .recruiter-actions .btn-ghost{background:#fff;color:#1b2230;border:1px solid #b9cddb}
+html[data-theme=light] .eyebrow{color:#0b6f93}
+html[data-theme=light] footer{color:#5d6b7c;border-top-color:#cfdbe6}
+html[data-theme=light] .resume.on-screen{--ink:#0b1a2b;--soft:#1b2230;--muted:#5d6b7c;--accent:#0b6f93;--rule:#d5e1ea;--chip:#b9cddb;background:#fff;border-color:#d5e1ea;box-shadow:0 10px 30px rgba(11,26,43,.08)}
+html[data-theme=light] a:focus-visible{outline-color:#0b6f93}
+@media(min-width:1100px){
+  .resume.on-screen{padding:20px 26px}
+  .resume.on-screen .rs-cols{grid-template-columns:1fr 1fr .78fr;gap:26px}
+  .resume.on-screen .rs-main{display:contents}
+  .resume.on-screen h2{margin:11px 0 6px}
+  .resume.on-screen .rs-head{padding-bottom:10px}
+}
+@media(max-width:800px){
+  .resume.on-screen{padding:18px;min-height:0}.rs-head{display:block}.rs-contacts{text-align:left;margin-top:12px;word-break:break-word}.rs-cols{grid-template-columns:1fr;gap:0}
+}
+
 @media print{
-  @page{size:A4;margin:14mm 15mm}
+  @page{size:A4;margin:12mm 14mm}
   html,body{background:#fff!important;color:#1b2230}
-  .site>*:not(.print-sheet){display:none!important}
+  body:before{display:none}
+  .site>*:not(.resume){display:none!important}
   .site{width:auto;padding:0}
-  .print-sheet{display:block;font:10.5pt/1.45 Inter,"Segoe UI",Arial,sans-serif;color:#1b2230}
-  .print-sheet h1{font-family:'Space Grotesk',Inter,sans-serif;font-size:24pt;line-height:1;margin:0;letter-spacing:-.02em;color:#0b1a2b}
-  .print-sheet h2{font-size:8.5pt;letter-spacing:.16em;text-transform:uppercase;color:#0b6f93;margin:12pt 0 4pt;padding-bottom:2pt;border-bottom:1px solid #cfdde8}
-  .print-sheet p{margin:0 0 4pt}
-  .ps-head{display:flex;justify-content:space-between;gap:16pt;align-items:flex-end;padding-bottom:8pt;border-bottom:2px solid #0b6f93}
-  .ps-role{margin:5pt 0 0!important;font-weight:700;color:#0b6f93}
-  .ps-contacts{list-style:none;margin:0;padding:0;text-align:right;font-size:8.5pt;line-height:1.5;color:#3d4b5c}
-  .ps-summary{margin-top:9pt!important}
-  .ps-project{margin-bottom:5pt;break-inside:avoid}
-  .ps-project p{margin:1pt 0 0}
-  .ps-muted{color:#5d6b7c}
-  .ps-cols{display:grid;grid-template-columns:1fr 1fr;gap:16pt}
-  .ps-job{break-inside:avoid}
-  .ps-foot{margin-top:10pt!important;font-size:8.5pt;color:#5d6b7c}
+  .resume,.resume.on-screen{display:block;min-height:0;margin:0;padding:0;border:0;border-radius:0;background:none;font:10.5pt/1.45 Inter,"Segoe UI",Arial,sans-serif;--ink:#0b1a2b;--soft:#1b2230;--muted:#5d6b7c;--accent:#0b6f93;--rule:#cfdde8;--chip:#b9cddb}
+  .resume .rs-list li{font-size:9pt}
+  .resume h1{font-size:24pt}
+  .resume h2{font-size:8.5pt;margin:13pt 0 5pt}
+  .rs-contacts{font-size:8.5pt}.rs-contacts span{font-size:7.5pt}
+  .rs-item-head span,.rs-muted{font-size:8.5pt}
+  .rs-cols{grid-template-columns:1.75fr 1fr;gap:18pt}
 }
