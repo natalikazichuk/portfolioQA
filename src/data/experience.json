@@ -1,21 +1,13 @@
 {
-  "softSkills": [
-    "Attention to detail",
-    "Critical thinking & analysis",
-    "Clear communication",
-    "Teamwork",
-    "Adaptability",
-    "Active learning",
-    "Initiative",
-    "Persistence",
-    "Trustworthiness"
-  ],
   "jobs": [
     {
+      "id": "privatbank",
+      "short": "PrivatBank",
       "role": "Account Manager",
       "company": "PrivatBank",
       "place": "Rivne",
       "did": "Issued consumer loans at bank points inside Foxtrot, Eldorado, Comfy and KTS stores; set up cards, deposits and other banking products in a bank with a strong corporate culture of honesty, transparency and personal responsibility.",
+      "brief": "Issued consumer loans at partner retail points (Foxtrot, Eldorado, Comfy, KTS); set up cards, deposits and other banking products.",
       "qa": [
         {
           "text": "Zero-error paperwork: every loan file had to match bank rules before sign-off",
@@ -40,10 +32,13 @@
       ]
     },
     {
+      "id": "avtoritet",
+      "short": "Avtoritet",
       "role": "Trade Department Manager",
       "company": "Construction company “Avtoritet”",
       "place": "Rivne",
       "did": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region: built and analysed the client database, handled objections in negotiations, ran contracts, accounting documents, order follow-up and internal processes.",
+      "brief": "Built a wholesale dealer network for Tikkurila, Kolorit and Tex in the Rivne region: client database, negotiations, contracts, accounting documents, order follow-up.",
       "qa": [
         {
           "text": "Building and analysing the client database: segments, gaps, duplicates",
@@ -64,10 +59,13 @@
       ]
     },
     {
+      "id": "retail",
+      "short": "Retail",
       "role": "Senior Manager, Retail Administrator",
       "company": "Retail store",
       "place": "Rivne",
       "did": "Ran the sales floor of a store with a large product range: goods receiving and checking deliveries against invoices, regular stock inventories, staff training and accounting reports.",
+      "brief": "Ran the sales floor of a store with a large product range: checking deliveries against invoices, stock inventories, staff training, accounting reports.",
       "qa": [
         {
           "text": "Checking every delivery against the invoice",

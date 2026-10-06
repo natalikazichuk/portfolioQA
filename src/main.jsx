@@ -15,7 +15,20 @@ const projectLinks = {
   schoolkingdoms: 'https://natalikazichuk.github.io/schoolkingdoms-demo/'
 };
 
-const vjpDocsLink = 'https://github.com/natalikazichuk/portfolioQA2026/blob/main/docs/vjp/README.md';
+const projectTitle = Object.fromEntries(projects.map(p => [p.id, p.title]));
+const jobShort = Object.fromEntries(experience.jobs.map(j => [j.id, j.short]));
+const softSkills = skills.soft.map(s => s.name);
+const skillsFromJob = id => [...skills.hard, ...skills.soft].filter(s => s.background.includes(id)).map(s => s.name);
+
+function SkillLinks({ projects: ids, background }) {
+  if (!ids.length && !background.length) return <div className="skill-links"><span className="chip-soon">Case study coming soon</span></div>;
+  return <div className="skill-links">
+    {ids.map(id => projectLinks[id]
+      ? <a className="chip-project" key={id} href={projectLinks[id]} target="_blank" rel="noopener noreferrer">{projectTitle[id]} ↗</a>
+      : <b className="chip-project" key={id}>{projectTitle[id]}</b>)}
+    {background.map(id => <a className="chip-job" key={id} href="#background">{jobShort[id]}</a>)}
+  </div>;
+}
 
 const getView = () => (window.location.hash === '#recruiter' ? 'recruiter' : 'home');
 
@@ -28,12 +41,6 @@ function useView() {
   }, []);
   useEffect(() => window.scrollTo(0, 0), [view]);
   return view;
-}
-
-function LinkBtn({ href, secondary, children }) {
-  if (!href) return null;
-  const external = /^https?:/.test(href);
-  return <a className={secondary ? 'btn btn-ghost' : 'btn btn-primary'} href={href} {...(external ? {target:'_blank',rel:'noopener noreferrer'} : {})}>{children}</a>;
 }
 
 function Header({ view }) {
@@ -136,42 +143,62 @@ function Home() {
 
       <section id="skills" className="section skills-section">
         <div className="section-heading">
-          <div><div className="eyebrow">02 / CAPABILITIES</div><h2>QA Skills</h2></div>
-          <p>From exploratory testing and test design to APIs and AI response evaluation.</p>
+          <div><div className="eyebrow">02 / CAPABILITIES &amp; BACKGROUND</div><h2>QA Skills</h2></div>
+          <p>Each skill is linked to the projects where I used it and to the job before QA where it comes from.</p>
         </div>
-        <div className="skills-grid">
-          {skills.map((s)=><div className="skill-card" key={s.name}>
-            <div className="skill-head"><span>{s.icon} {s.name}</span><b>{s.level}%</b></div>
-            <div className="bar"><i style={{width:s.level+'%'}} /></div>
-          </div>)}
+        <div className="skill-legend">
+          <span><b className="chip-project">Project</b> applied in</span>
+          <span><b className="chip-job">Job</b> comes from</span>
         </div>
-      </section>
+        <div className="skill-groups">
+          <div className="skill-group">
+            <div className="skill-group-head"><span className="eyebrow">HARD / TECH SKILLS</span><small>{skills.hard.length}</small></div>
+            {skills.hard.map(s=><div className="skill-card" key={s.name}>
+              <div className="skill-head"><span>{s.icon} {s.name}</span>{s.level && <b>{s.level}%</b>}</div>
+              {s.level && <div className="bar"><i style={{width:s.level+'%'}} /></div>}
+              <p className="skill-note">{s.note}</p>
+              <SkillLinks projects={s.projects} background={s.background} />
+            </div>)}
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-head"><span className="eyebrow">SOFT SKILLS</span><small>{skills.soft.length}</small></div>
+            {skills.soft.map(s=><div className="skill-card soft" key={s.name}>
+              <div className="skill-head"><span>{s.name}</span></div>
+              <dl className="skill-trace">
+                <dt>Before QA</dt><dd>{s.from}</dd>
+                <dt>In QA</dt><dd>{s.qa}</dd>
+              </dl>
+              <SkillLinks projects={s.projects} background={s.background} />
+            </div>)}
+          </div>
+        </div>
 
-      <section id="background" className="section background-section">
-        <div className="section-heading">
-          <div><div className="eyebrow">03 / BACKGROUND</div><h2>Before QA</h2></div>
-          <p>Banking, B2B sales and retail: working with customers, documents and processes is where my QA instincts come from.</p>
-        </div>
-        <div className="job-list">
-          {experience.jobs.map(j=><article className="job-card" key={j.company}>
-            <div className="job-meta"><span>{j.place}</span></div>
-            <h3>{j.role}</h3>
-            <p className="job-company">{j.company}</p>
-            <p className="job-did">{j.did}</p>
-            <div className="job-qa-label">USEFUL FOR QA</div>
-            <ul>{j.qa.map(q=><li key={q.tag}><b className="qa-tag">{q.tag}</b><span>{q.text}</span></li>)}</ul>
-          </article>)}
-        </div>
-        <div className="soft-skills">
-          <span className="eyebrow">SOFT SKILLS</span>
-          <div className="chips">{experience.softSkills.map(s=><span key={s}>{s}</span>)}</div>
+        <div id="background" className="background-sub">
+          <div className="sub-heading">
+            <div><div className="eyebrow">WHERE IT COMES FROM</div><h3>Before QA</h3></div>
+            <p>Banking, B2B sales and retail: working with customers, documents and processes is where my QA instincts come from.</p>
+          </div>
+          <div className="job-list">
+            {experience.jobs.map(j=><article className="job-card" key={j.id}>
+              <div className="job-meta"><span>{j.place}</span></div>
+              <h3>{j.role}</h3>
+              <p className="job-company">{j.company}</p>
+              <p className="job-did">{j.did}</p>
+              <div className="job-qa-label">USEFUL FOR QA</div>
+              <ul>{j.qa.map(q=><li key={q.tag}><b className="qa-tag">{q.tag}</b><span>{q.text}</span></li>)}</ul>
+              <div className="job-skills">
+                <span>Skills it built</span>
+                <div className="skill-links">{skillsFromJob(j.id).map(n=><b className="chip-skill" key={n}>{n}</b>)}</div>
+              </div>
+            </article>)}
+          </div>
         </div>
       </section>
 
       <section id="evidence" className="section evidence-section">
         <div className="evidence-card">
           <div className="evidence-copy">
-            <div className="eyebrow">04 / PROOF OF WORK</div>
+            <div className="eyebrow">03 / PROOF OF WORK</div>
             <h2>One bug can change the whole story.</h2>
             <p>{profile.highlights[0]}</p>
             <div className="bug-row">
@@ -185,7 +212,7 @@ function Home() {
       </section>
 
       <section id="about" className="section about-section">
-        <div><div className="eyebrow">05 / ABOUT</div><h2>Quality is not an accident.</h2></div>
+        <div><div className="eyebrow">04 / ABOUT</div><h2>Quality is not an accident.</h2></div>
         <div>
           <p>{profile.summary}</p>
           <div className="about-points">
@@ -202,90 +229,91 @@ function Home() {
   );
 }
 
-function Recruiter() {
-  const best = projects.find(p=>p.featured)||projects[0];
-  const github = 'https://github.com/natalikazichuk';
-  const email = 'mailto:natalikazichuk@gmail.com';
-  return <div className="recruiter-page">
-    <div className="eyebrow">RECRUITER MODE · 60 SEC</div>
-    <h1>{profile.name}<br /><em>{profile.role}</em></h1>
-    <p className="hero-text">{profile.summary}</p>
-    <div className="actions">
-      <LinkBtn href={github}>GITHUB ↗</LinkBtn>
-      <LinkBtn href={email} secondary>CONTACT</LinkBtn>
-      <a className="btn btn-ghost" href="#">← FULL PORTFOLIO</a>
-    </div>
-    <div className="recruit-grid">
-      <section><span className="eyebrow">KEY EVIDENCE</span><ul>{profile.highlights.map(h=><li key={h}>{h}</li>)}</ul></section>
-      <section><span className="eyebrow">BEST CASE</span><h2 className="project-name">{best.title}</h2><p>{best.type}</p><a className="text-link" href={projectLinks[best.id]} target="_blank" rel="noopener noreferrer">Open case →</a>{best.id==='veteran-job-portal' && <> · <a className="text-link" href={vjpDocsLink} target="_blank" rel="noopener noreferrer">Test plan, cases &amp; RTM →</a></>}</section>
-      <section><span className="eyebrow">TOOLS</span><div className="chips">{profile.tools.map(t=><span key={t}>{t}</span>)}</div></section>
-      <section><span className="eyebrow">BACKGROUND</span><ul>{experience.jobs.map(j=><li key={j.company}>{j.role} · {j.company}</li>)}</ul></section>
-      <section><span className="eyebrow">SOFT SKILLS</span><div className="chips">{experience.softSkills.map(t=><span key={t}>{t}</span>)}</div></section>
-    </div>
-  </div>;
-}
-
 const PORTFOLIO_URL = 'natalikazichuk.github.io/portfolioQA2026';
-const printProjects = [
-  ['VeteranJobsPortal', 'Job platform · 3 roles', 'Test plan, 24 user stories, 69 scenarios, 40 test cases, RTM 24/24. Found a High bug: guest applications not visible to the recruiter; fix verified.'],
-  ['Navkolo', 'Business SaaS', 'Exploratory and API testing (Postman, DevTools) without a spec. 9 defects, 2 High: e.g. registration accepted a mismatched password confirmation.'],
-  ['Guru99 Bank', 'Banking web app', '30 test cases for the New Customer form (17 pass / 13 fail), Jira bug reports, retest on v2.0. Found a raw DB error exposing the DB user.'],
-  ['SchoolKingdoms', 'Gamified learning platform', 'Public demo build with a Chromium smoke test, 39/39 pages pass; the test also caught missing assets in the full app.']
+const contacts = [
+  ['Email', 'natalikazichuk@gmail.com', 'mailto:natalikazichuk@gmail.com'],
+  ['Portfolio', PORTFOLIO_URL, 'https://' + PORTFOLIO_URL + '/'],
+  ['GitHub', 'github.com/natalikazichuk', 'https://github.com/natalikazichuk'],
+  ['LinkedIn', 'linkedin.com/in/natali-kazichuk-960153249', 'https://www.linkedin.com/in/natali-kazichuk-960153249']
+];
+const resumeProjects = [
+  ['veteran-job-portal', 'Job platform · 3 roles', 'Test plan, 24 user stories, 69 scenarios, 40 test cases, RTM 24/24. Found a High bug: guest applications not visible to the recruiter; fix verified.'],
+  ['navkolo', 'Business SaaS · accounting & trade', 'Exploratory and API testing (Postman, DevTools) without a spec. 9 defects, 2 High: e.g. registration accepted a mismatched password confirmation.'],
+  ['guru99', 'Banking web app', '30 test cases for the New Customer form (17 pass / 13 fail), Jira bug reports, retest on v2.0. Found a raw DB error exposing the DB user.'],
+  ['schoolkingdoms', 'Gamified learning platform', 'QA + product owner. Public demo with a Playwright smoke test, 39/39 pages pass; bug report SK-BUG-143 fixed.']
 ];
 
-/* Одна сторінка A4: видно лише під час друку (кнопка Print у шапці). */
-function PrintSheet() {
-  return <div className="print-sheet" aria-hidden="true">
-    <header className="ps-head">
+/* Резюме: на екрані в Recruiter mode і на друк (одна сторінка A4). */
+function Resume({ view }) {
+  const onScreen = view === 'recruiter';
+  return <article className={'resume' + (onScreen ? ' on-screen' : '')} aria-hidden={onScreen ? undefined : 'true'}>
+    <header className="rs-head">
       <div>
         <h1>Natali Kazichuk</h1>
-        <p className="ps-role">{profile.role} · API Testing · Test Design</p>
+        <p className="rs-role">{profile.role} · API Testing · Test Design</p>
       </div>
-      <ul className="ps-contacts">
-        <li>natalikazichuk@gmail.com</li>
-        <li>{PORTFOLIO_URL}</li>
-        <li>github.com/natalikazichuk</li>
-        <li>linkedin.com/in/natali-kazichuk-960153249</li>
+      <ul className="rs-contacts">
+        {contacts.map(([label, text, href]) => <li key={label}><span>{label}</span> <a href={href} target="_blank" rel="noopener noreferrer" tabIndex={onScreen ? undefined : -1}>{text}</a></li>)}
       </ul>
     </header>
-    <p className="ps-summary">{profile.summary}</p>
+    <p className="rs-summary">{profile.summary}</p>
 
-    <h2>Projects</h2>
-    {printProjects.map(([name, type, text]) => <div className="ps-project" key={name}>
-      <b>{name}</b> <span className="ps-muted">· {type}</span>
-      <p>{text}</p>
-    </div>)}
+    <div className="rs-cols">
+      <div className="rs-main">
+        <section>
+        <h2>QA experience</h2>
+        {resumeProjects.map(([id, type, text]) => <div className="rs-item" key={id}>
+          <div className="rs-item-head"><b>{projectTitle[id]}</b><span>{type}</span></div>
+          <p>{text}</p>
+        </div>)}
+        </section>
 
-    <div className="ps-cols">
-      <div>
-        <h2>Skills</h2>
-        <p>{skills.map(s => s.name).join(' · ')}</p>
+        <section>
+        <h2>Work experience before QA</h2>
+        {experience.jobs.map(j => <div className="rs-item" key={j.id}>
+          <div className="rs-item-head"><b>{j.role}</b><span>{j.company} · {j.place}</span></div>
+          <p>{j.brief}</p>
+          <p className="rs-muted">Useful for QA: {j.qa.map(q => q.tag).join(' · ')}</p>
+        </div>)}
+        </section>
+      </div>
+
+      <aside className="rs-side">
+        <h2>Hard skills</h2>
+        <ul className="rs-list">{skills.hard.map(s => <li key={s.name}>{s.name}</li>)}</ul>
         <h2>Tools</h2>
-        <p>{[...profile.tools, 'Jira', 'SQL'].join(' · ')}</p>
-      </div>
-      <div>
-        <h2>Before QA</h2>
-        {experience.jobs.map(j => <p key={j.company} className="ps-job">
-          <b>{j.role}</b>, {j.company}<br />
-          <span className="ps-muted">{j.qa.map(q => q.tag).join(' · ')}</span>
-        </p>)}
-      </div>
+        <p>{[...profile.tools, 'Jira'].join(' · ')}</p>
+        <h2>QA artifacts</h2>
+        <p>Test plans · user stories &amp; acceptance criteria · test cases · checklists · RTM · bug reports</p>
+        <h2>Soft skills</h2>
+        <ul className="rs-list">{softSkills.map(s => <li key={s}>{s}</li>)}</ul>
+      </aside>
     </div>
+  </article>;
+}
 
-    <h2>Soft skills</h2>
-    <p>{experience.softSkills.join(' · ')}</p>
-    <p className="ps-foot">Full portfolio with case studies and test documentation: {PORTFOLIO_URL}</p>
+function Recruiter() {
+  return <div className="recruiter-bar">
+    <span className="eyebrow">RECRUITER MODE · CV</span>
+    <div className="recruiter-actions">
+      <button type="button" className="btn btn-primary" onClick={() => window.print()}>PRINT / SAVE PDF (A4)</button>
+      <a className="btn btn-ghost" href="#">← FULL PORTFOLIO</a>
+    </div>
   </div>;
 }
 
 function App() {
   const view=useView();
+  useEffect(() => {
+    if (view === 'recruiter') document.documentElement.dataset.theme = 'light';
+    else delete document.documentElement.dataset.theme;
+  }, [view]);
   return <div className="site">
     <a className="skip" href="#content">Skip to content</a>
     <Header view={view}/>
     <main id="content">{view==='recruiter'?<Recruiter/>:<Home/>}</main>
+    <Resume view={view}/>
     <footer><span>QA NK</span><span>Manual QA · API · AI Evaluation</span><span>Quality is not an accident.</span></footer>
-    <PrintSheet/>
   </div>;
 }
 
