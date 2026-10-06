@@ -304,10 +304,6 @@ function Recruiter() {
 
 function App() {
   const view=useView();
-  useEffect(() => {
-    if (view === 'recruiter') document.documentElement.dataset.theme = 'light';
-    else delete document.documentElement.dataset.theme;
-  }, [view]);
   return <div className="site">
     <a className="skip" href="#content">Skip to content</a>
     <Header view={view}/>
