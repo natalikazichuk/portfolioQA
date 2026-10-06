@@ -108,6 +108,18 @@ a.chip-project:hover,a.chip-job:hover{border-color:currentColor}
 .job-card li{display:flex;flex-direction:column;align-items:flex-start;gap:5px;color:#3f4a49;font-size:12.5px;line-height:1.5}
 .qa-tag{display:inline-block;color:var(--cyan);background:rgba(42,127,121,.1);border:1px solid #a9d8d3;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:700}
 @media(max-width:1000px){.job-list{grid-template-columns:1fr}}
+.checklists-section{padding-top:30px}
+.checklist-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+.checklist-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:20px}
+.checklist-head h3{margin:0;font-size:22px;letter-spacing:-.02em}
+.checklist-head p{margin:0;color:var(--muted);font-size:13px;flex-basis:100%}
+.checklist-head span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+.a4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.a4-page{position:relative;display:block;aspect-ratio:210/297;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 8px 22px rgba(28,52,51,.10);transition:.2s transform,.2s box-shadow}
+.a4-page:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(28,52,51,.16)}
+.a4-page img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.a4-page span{position:absolute;right:8px;bottom:8px;font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--cyan);background:rgba(255,254,251,.94);border:1px solid var(--line);border-radius:999px;padding:3px 8px}
+@media(max-width:800px){.a4-grid{grid-template-columns:repeat(2,1fr);gap:12px}.checklist-card{padding:16px}}
 .evidence-section{padding-top:5px}
 .evidence-card{min-height:300px;display:flex;align-items:center;justify-content:space-between;gap:40px;border:1px solid #ddd3c0;border-radius:18px;background:linear-gradient(120deg,#fffefb,#f6f3ec);padding:42px;position:relative;overflow:hidden}
 .evidence-copy{position:relative;z-index:1}.evidence-card h2{max-width:690px}.evidence-card>div p{max-width:800px;color:#3f4a49;line-height:1.7;font-size:15px}
